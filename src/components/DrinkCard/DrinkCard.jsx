@@ -3,7 +3,7 @@ import { IdDrink } from "../../App";
 import "./index.css";
 
 const DrinkCard = ({ cocktail }) => {
-	const { id, setId, setInfo } = useContext(IdDrink);
+	const { setId, setInfo } = useContext(IdDrink);
 
 	const handleClickID = () => {
 		setId(cocktail.idDrink);

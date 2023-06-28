@@ -14,23 +14,12 @@ export const IdDrink = createContext();
 function App() {
 	const [info, setInfo] = useState(false);
 	const [id, setId] = useState(15300);
-	const [drink, setDrink] = useState("");
-
-	useEffect(() => {
-		GET("lookup.php", "i", `${id}`).then(({ drinks }) =>
-			handleViewInfo(drinks)
-		);
-	}, [info]);
-
-	const handleViewInfo = (drinks) => {
-		setDrink(drinks);
-	};
 
 	return (
 		<IdDrink.Provider value={{ id, setId, setInfo }}>
 			<div className="App">
 				{info ? (
-					<Drink drinks={drink} />
+					<Drink />
 				) : (
 					<>
 						<h1 className="App__title">Cocktails App</h1>

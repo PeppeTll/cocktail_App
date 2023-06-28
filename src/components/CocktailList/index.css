@@ -1,0 +1,11 @@
+.CocktailList__list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  overflow-x: scroll;
+}
+
+.CocktailList__list::-webkit-scrollbar {
+  display: none;
+}

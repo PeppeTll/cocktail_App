@@ -1,8 +1,46 @@
-// import { useState } from "react";
+import { useState, useEffect, createContext } from "react";
 import "./App.css";
 
+//Componets
+import CocktailList from "./components/CocktailList";
+import Drink from "./components/Drink";
+
+//utils
+import { GET } from "./utils/https";
+
+//Context
+export const IdDrink = createContext();
+
 function App() {
-	return <div className="App"></div>;
+	const [info, setInfo] = useState(false);
+	const [id, setId] = useState(15300);
+	const [drink, setDrink] = useState("");
+
+	useEffect(() => {
+		GET("lookup.php", "i", `${id}`).then(({ drinks }) =>
+			handleViewInfo(drinks)
+		);
+	}, [info]);
+
+	const handleViewInfo = (drinks) => {
+		setDrink(drinks);
+	};
+
+	return (
+		<IdDrink.Provider value={{ id, setId, setInfo }}>
+			<div className="App">
+				{info ? (
+					<Drink drinks={drink} />
+				) : (
+					<>
+						<h1 className="App__title">Cocktails App</h1>
+						<CocktailList name={"Ordinary_Drink"} />
+						<CocktailList name={"Cocktail"} />
+					</>
+				)}
+			</div>
+		</IdDrink.Provider>
+	);
 }
 
 export default App;

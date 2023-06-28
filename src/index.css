@@ -1,0 +1,44 @@
+:root {
+  --indigo: #033f63;
+  --caribbean: #28666E;
+  --cambrige: #7C9885;
+  --sage: #B5B682;
+  --peach: #FEDC97
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+body {
+  background-color: var(--indigo);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Bacasime Antique', serif;
+  color: var(--sage) !important;
+}
+
+p,
+a,
+span,
+li {
+  font-family: 'Roboto Serif', serif;
+  color: var(--peach) !important;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100dvw;
+  height: 100dvh;
+}

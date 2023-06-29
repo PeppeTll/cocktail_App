@@ -7,11 +7,11 @@ import { GET } from "../../utils/https.js";
 //Components
 import DrinkCard from "../DrinkCard";
 
-const CocktailList = ({ name }) => {
+const CocktailList = ({ path, query, value }) => {
 	const [cocktails, setCocktails] = useState([]);
 
 	useEffect(() => {
-		GET("filter.php", "c", `${name}`).then(({ drinks }) =>
+		GET(`${path}`, `${query}`, `${value}`).then(({ drinks }) =>
 			setCocktails(drinks)
 		);
 	}, []);

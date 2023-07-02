@@ -8,6 +8,7 @@ import Search from "./components/Search";
 
 //utils
 import { GET } from "./utils/https";
+import Checkbox from "./components/Checkbox/Checkbox";
 
 //Context
 export const IdDrink = createContext();
@@ -16,6 +17,7 @@ function App() {
 	const [info, setInfo] = useState(false);
 	const [id, setId] = useState(15300);
 	const [inputValue, setInputValue] = useState("");
+	const [check, setCheck] = useState(false);
 
 	return (
 		<IdDrink.Provider value={{ id, setId, setInfo }}>
@@ -30,23 +32,29 @@ function App() {
 						<Search inputValue={inputValue} setInputValue={setInputValue} />
 						{inputValue ? (
 							//inputvalue===true
-							<CocktailList
-								path={"search.php"}
-								query={"s"}
-								value={inputValue}
-							/>
+							<>
+								<Checkbox check={check} setCheck={setCheck} />
+								<CocktailList
+									check={check}
+									path={"search.php"}
+									query={"s"}
+									inputValue={inputValue}
+								/>
+							</>
 						) : (
 							//inputvalue===false
 							<>
 								<CocktailList
+									check={check}
 									path={"filter.php"}
 									query={"c"}
-									value={"Ordinary_drink"}
+									inputValue={"Ordinary_drink"}
 								/>
 								<CocktailList
+									check={check}
 									path={"filter.php"}
 									query={"c"}
-									value={"Cocktail"}
+									inputValue={"Cocktail"}
 								/>
 							</>
 						)}
